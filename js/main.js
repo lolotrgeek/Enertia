@@ -36,14 +36,15 @@
 					'.important\\28 narrower\\29',
 					skel.breakpoint('narrower').active
 				);
-			//don't load video for mobile
-				$('video').remove();
+                //don't load video for mobile
+                    $('video').remove();
+            
 			});
-                    
+                               
 	});
-    
+   
     //hide menu when it gets to footer
-        var distance = $('footer#footer').offset().top,
+        var distance = $('#footer').offset().top,
         $window = $(window);
             
         $window.scroll(function() {
@@ -54,22 +55,30 @@
                 $('#site-navigation').fadeIn(500);
             }
         });
-//animate anchor clicks
-
-    $(function() {
-      $('a[href*="#"]:not([href="#"])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          if (target.length) {
-            $('html, body').animate({
-              scrollTop: target.offset().top
-            }, 1000);
-            return false;
-          }
-        }
-      });
-    });
+    //Check to see if the window is top if not then display button
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+	
+    //animate anchor clicks
+        $(function() {
+          $('a[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html, body').animate({
+                  scrollTop: target.offset().top
+                }, 1000);
+                return false;
+              }
+            }
+          });
+        });
    
 })(jQuery);
 

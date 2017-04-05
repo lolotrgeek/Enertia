@@ -76,6 +76,41 @@ li.current-menu-item {
 li.current-menu-item a {
     color:#ffffff;
 }
+
+.menu-widget {
+    position:absolute;
+    right:0;
+}
+a.menu-button { 
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    background: #4eb980;
+    border-radius: 4px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.125em;
+    line-height: 3.25em;
+    padding: 0 .5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.scrollToTop {
+    display:none;
+    position: fixed !important;
+    bottom:0 !important;
+    right:0 !important;
+}
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
@@ -91,6 +126,7 @@ h1.site-title {
 	clear: both;
 	display: block;
     position:fixed;
+    width:100%;
     z-index:4;
 }
 
@@ -103,10 +139,9 @@ h1.site-title {
 @media screen and (max-width: 1700px) {
      
     .main-navigation {
-        background:#ffffff;
-        border-bottom:1px solid rgba(224, 224, 224, 0.75);
+        background:white;
         top:0;
-        width:100%;
+        
     }
 }
 .main-navigation li {
@@ -310,6 +345,44 @@ h1.site-title {
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
+article h1 {
+    font-size: 2em !important;
+}
+
+article h3 {
+    margin-bottom:0 !important;
+    font-size:1.1em;
+}
+
+article h2 {
+    font-size: 1.25em !important;
+}    
+
+.author-list {
+    text-align:center;
+}
+
+.user {
+    display:inline-block;
+    margin:1em;
+}
+
+.user a {
+    border-bottom:none;
+}
+
+.user a span.name {
+    position: absolute;
+    margin: 150px 0 0 -125px;
+}
+.user a span.avatar img.avatar-social-login {
+    float:none !important;
+    margin-right:0 !important;
+} 
+.user div.bp_Title {   
+    margin: 12px 12px 0;
+    font-style: italic;
+}
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/

@@ -8,7 +8,7 @@
  */
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> class =" box container">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
         <header class="entry-header ">
             <?php
             if ( is_single() ) :
@@ -20,7 +20,7 @@
 
             if ( 'post' === get_post_type() ) : ?>
             <div class="entry-meta">
-                <?php energy_posted_on(); ?>
+                <?php //energy_posted_on(); ?>
             </div><!-- .entry-meta -->
             <?php
             endif; ?>

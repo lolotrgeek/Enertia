@@ -46,7 +46,6 @@ function energy_setup() {
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'energy' ),
 	) );
-
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -98,7 +97,15 @@ function energy_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-    
+  	register_sidebar( array(
+		'name'          => esc_html__( 'Menu Widget', 'energy' ),
+		'id'            => 'main-menu',
+		'description'   => esc_html__( 'Menu Widget', 'energy' ),
+		'before_widget' => '<div class="menu-widget">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<span style="display:none;">',
+		'after_title'   => '</span>',
+	) );  
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header', 'energy' ),
 		'id'            => 'home-header',
@@ -107,27 +114,8 @@ function energy_widgets_init() {
 		'after_widget'  => '</header>',
 		'before_title'  => '<h2>',
 		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Projects', 'energy' ),
-		'id'            => 'home-projects',
-		'description'   => esc_html__( 'Homepage Projects', 'energy' ),
-		'before_widget' => '<div class="box container">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<header><h2>',
-		'after_title'   => '</h2></header>',
-	) );    
-    
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer', 'energy' ),
-		'id'            => 'home-footer',
-		'description'   => esc_html__( 'Homepage Footer', 'energy' ),
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	
+	) ); 
+   	
     register_sidebar( array(
 		'name'          => esc_html__( 'First Definition', 'energy' ),
 		'id'            => 'home-def-1',
@@ -154,57 +142,56 @@ function energy_widgets_init() {
 		'after_widget'  => '',
 		'before_title'  => '<h3>',
 		'after_title'   => '</h3>',
+	) ); 
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Statement', 'energy' ),
+		'id'            => 'home-statement',
+		'description'   => esc_html__( 'Homepage statement.', 'energy' ),
+		'before_widget' => '<div class="box container">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<header><h2>',
+		'after_title'   => '</h2></header>',
 	) );       
+    register_sidebar( array(
+		'name'          => esc_html__( 'Home last', 'energy' ),
+		'id'            => 'home-footer',
+		'description'   => esc_html__( 'Homepage Footer', 'energy' ),
+		'before_widget' => '<div class="major container 75%">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
+	) );
+    register_sidebar( array(
+		'name'          => esc_html__( 'Footer Content', 'energy' ),
+		'id'            => 'footer',
+		'description'   => esc_html__( 'Footer content.', 'energy' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<header id="contact" class="major last"><h2>',
+		'after_title'   => '</h2></header>',
+                
+	) );     
+    register_sidebar( array(
+		'name'          => esc_html__( 'Footer Social', 'energy' ),
+		'id'            => 'footer-social',
+		'description'   => esc_html__( 'Footer social icons and links.', 'energy' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+    register_sidebar( array(
+		'name'          => esc_html__( 'Footer menu', 'energy' ),
+		'id'            => 'footer-menu',
+		'description'   => esc_html__( 'Footer sitemap or menu.', 'energy' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );      
 }
 add_action( 'widgets_init', 'energy_widgets_init' );
 
-add_action( 'init', 'create_projects' );
-
-function create_projects() {
-//first create the post_type 'project'
-	
-	// start off by establishing our labels for the Projects as post_type
-	$labels = array(
-		'name'               => _x( 'Projects', 'post type general name' ),
-		'singular_name'      => _x( 'Project', 'post type singular name' ),
-		'menu_name'          => _x( 'Projects', 'admin menu' ),
-		'name_admin_bar'     => _x( 'Project', 'add new on admin bar' ),
-		'add_new'            => _x( 'Add New', 'project' ),
-		'add_new_item'       => __( 'Add New Project' ),
-		'new_item'           => __( 'New Project' ),
-		'edit_item'          => __( 'Edit Project' ),
-		'view_item'          => __( 'View Project' ),
-		'all_items'          => __( 'All Projects' ),
-		'search_items'       => __( 'Search Projects' ),
-		'parent_item_colon'  => __( 'Parent Projects:' ),
-		'not_found'          => __( 'No projects found.' ),
-		'not_found_in_trash' => __( 'No projects found in Trash.' )
-	);
-	//now we build the actual post_type 'Projects'
-	$args = array(
-		'labels'             => $labels,
-		'description'        => __( 'Projecting Profiles and meta tags.' ),
-		'public'             => false,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'project' ),
-		'capability_type'    => 'post',
-		'has_archive'        => true,
-		'hierarchical'       => true,
-		'menu_position'      => null,
-		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
-	);
-	//and we register it, done
-	register_post_type( 'project', $args );
-}
-
-add_filter('widget_posts_args', 'widget_posts_args_add_custom_type'); 
-function widget_posts_args_add_custom_type($params) {
-   $params['post_type'] = array('project');
-   return $params;
-}
 /**
  * Enqueue scripts and styles.
  */
@@ -259,3 +246,42 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/* Disable WordPress Admin Bar for all users but admins. */
+  show_admin_bar(false);
+
+  function splen_remove_admin_bar() {
+	if( !is_super_admin() ) 
+		add_filter( 'show_admin_bar', '__return_false' );
+}
+add_action('wp', 'splen_remove_admin_bar');
+
+/**
+ * New Registration Form
+ */
+ add_action( 'register_form', function() {
+    ?><style>#registerform > p:first-child{display:none;}</style><?php
+} );
+add_filter( 'sanitize_user', function( $sanitized_user, $raw_user, $strict ) {
+    if ( $raw_user != '' ) {
+        return $sanitized_user;
+    }
+
+    if ( ! empty ( $_REQUEST['action'] ) && $_REQUEST['action'] === 'register' && is_email( $_POST['user_email'] ) ) {
+        return $_POST['user_email'];
+    }
+
+    return $sanitized_user;
+}, 10, 3 );
+
+add_filter( 'validate_username', function( $valid, $username ) {
+    if ( $valid ) {
+        return $valid;
+    }
+
+    if ( ! empty ( $_REQUEST['action'] ) && $_REQUEST['action'] === 'register' && is_email( $_POST['user_email'] ) ) {
+        return true;
+    }
+
+    return is_email( $username );
+}, 10, 2 );

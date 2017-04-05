@@ -19,49 +19,49 @@ get_header(); ?>
 			<?php
 			if ( is_front_page() ) : ?>
                     <?php dynamic_sidebar( 'home-header' ); ?>
-                    
-                    
-                    
 				<div class="box alt container">
                 
 					<section class="feature left">
-                        <a href="#" class="image icon fa-tree"><img src="<?php echo esc_url( get_stylesheet_directory_uri( ) ); ?>/images/pic02.jpg" alt="" /></a>
+                        <a href="/about/" class="image icon fa-leaf"><img src="<?php echo esc_url( get_stylesheet_directory_uri( ) ); ?>/images/pic02.jpg" alt="" /></a>
 						<div class="content">
                             <?php dynamic_sidebar( 'home-def-1' ); ?>
 						</div>
 					</section>
 					<section class="feature right">
-                        <a href="#" class="image icon fa-exchange"><img src="<?php echo esc_url( get_stylesheet_directory_uri( ) ); ?>/images/pic03.jpg" alt="" /></a>
+                        <a href="/about/#approach" class="image icon fa-bolt"><img src="<?php echo esc_url( get_stylesheet_directory_uri( ) ); ?>/images/pic01.jpg" alt="" /></a>
 						<div class="content">
 							<?php dynamic_sidebar( 'home-def-2' ); ?>
 						</div>
 						
 					</section>
 					<section class="feature left">
-						<a href="#" class="image icon fa-signal"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/pic01.jpg" alt="" /></a>
+						<a href="/about/#vision" class="image icon fa-heart"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/pic03.jpg" alt="" /></a>
 						<div class="content">
                             <?php dynamic_sidebar( 'home-def-3' ); ?>
 						</div>
 					</section>
                 </div><!--box alt container-->
-                <div class="box container">
+                <?php dynamic_sidebar( 'home-statement' ); ?>
+                <!--<div class="box container">
                     <header>
                         <h2>Projects</h2>
-                    </header>
-                     <?php dynamic_sidebar( 'home-projects' ); ?>  
-                    <?php
-                    $args = array( 'post_type' => 'project', 'posts_per_page' => 5 );
+                    </header>-->
+                       
+                    <?php        /*                                 
+                    $args = array( 'category_name' => 'projects', 'posts_per_page' => 5 );
                     $loop = new WP_Query( $args );
                     while ( $loop->have_posts() ) : $loop->the_post();
 
+                        the_post_thumbnail();
                         get_template_part( 'template-parts/content', 'page' );
 
-                    endwhile; // End of the loop.
+                    endwhile; */ // End of the loop.
+                    
                     ?> 
-                </div><!--.box container-->
+                <!--</div> .box container-->
             <?php else: ?>
             
-             <div class="box container">
+             <div class="major container">
 			<?php
 			while ( have_posts() ) : the_post();
 
@@ -76,9 +76,9 @@ get_header(); ?>
 			?></div><!--.box container-->
             <?php endif; ?>
             
-            <footer class="major container 75%">
-                <?php dynamic_sidebar( 'home-footer' ); ?>
-            </footer>
+            
+            <?php dynamic_sidebar( 'home-footer' ); ?>
+
 		</main><!-- #main -->
 
 	</div><!-- #primary -->
