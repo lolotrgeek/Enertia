@@ -10,7 +10,7 @@
  */
 
 ?>
-        <a href="#content" class="scrollToTop button icon fa-chevron-up"></a>	
+        <a href="#content" class="scrollToTop icon fa-chevron-up"></a>
 	</div><!-- #content -->
         
         <footer id="footer" id="colophon" role="contentinfo">
@@ -27,7 +27,8 @@
                             <ul class="copyright">
                                 <li>&copy; <?php bloginfo( 'name' ); ?> All rights reserved.</li>
                                 <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                                <li>Theme: <a href="https://automattic.com/" rel="designer">Underscores.me</a></li> 	
+                                <!--<li>Theme: <a href="https://automattic.com/" rel="designer">Underscores.me</a></li> -->
+                                <li>Video:  <a href="https://www.youtube.com/watch?v=Ucmg7IL9c7c">Solar Reserve</a></li>
                             </ul>
                 </div><!-- .site-info -->
             </div><!--.container-->

@@ -257,31 +257,7 @@ require get_template_directory() . '/inc/jetpack.php';
 add_action('wp', 'splen_remove_admin_bar');
 
 /**
- * New Registration Form
+ * Buddypress Changes
  */
- add_action( 'register_form', function() {
-    ?><style>#registerform > p:first-child{display:none;}</style><?php
-} );
-add_filter( 'sanitize_user', function( $sanitized_user, $raw_user, $strict ) {
-    if ( $raw_user != '' ) {
-        return $sanitized_user;
-    }
-
-    if ( ! empty ( $_REQUEST['action'] ) && $_REQUEST['action'] === 'register' && is_email( $_POST['user_email'] ) ) {
-        return $_POST['user_email'];
-    }
-
-    return $sanitized_user;
-}, 10, 3 );
-
-add_filter( 'validate_username', function( $valid, $username ) {
-    if ( $valid ) {
-        return $valid;
-    }
-
-    if ( ! empty ( $_REQUEST['action'] ) && $_REQUEST['action'] === 'register' && is_email( $_POST['user_email'] ) ) {
-        return true;
-    }
-
-    return is_email( $username );
-}, 10, 2 );
+global $bp;
+bp_core_remove_nav_item($bp->activity->id);

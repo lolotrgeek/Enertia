@@ -2205,7 +2205,7 @@
 	.icon {
 		text-decoration: none;
 		border-bottom: none;
-		position: relative;
+		/*position: relative; */
 	}
 
 		.icon:before {

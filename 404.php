@@ -27,13 +27,13 @@ get_header(); ?>
                 <section class="error-404 not-found feature right">
                     <div class="content">
                         <?php
-                            the_widget( 'WP_Widget_Recent_Posts' );
+                            /*the_widget( 'WP_Widget_Recent_Posts' ); */
 
                             // Only show the widget if site has multiple categories.
                             if ( energy_categorized_blog() ) :
                         ?>
 
-                        <div class="widget widget_categories">
+                        <!--<div class="widget widget_categories">
                             <h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'energy' ); ?></h2>
                             <ul>
                             <?php
@@ -46,7 +46,7 @@ get_header(); ?>
                                 ) );
                             ?>
                             </ul>
-                        </div><!-- .widget -->
+                        </div>--><!-- .widget -->
                     
                         <?php
                             endif;

@@ -22,7 +22,7 @@ get_header(); ?>
 				<div class="box alt container">
                 
 					<section class="feature left">
-                        <a href="/about/" class="image icon fa-leaf"><img src="<?php echo esc_url( get_stylesheet_directory_uri( ) ); ?>/images/pic02.jpg" alt="" /></a>
+                        <a href="/projects/" class="image icon fa-leaf"><img src="<?php echo esc_url( get_stylesheet_directory_uri( ) ); ?>/images/pic02.jpg" alt="" /></a>
 						<div class="content">
                             <?php dynamic_sidebar( 'home-def-1' ); ?>
 						</div>
@@ -42,37 +42,30 @@ get_header(); ?>
 					</section>
                 </div><!--box alt container-->
                 <?php dynamic_sidebar( 'home-statement' ); ?>
-                <!--<div class="box container">
-                    <header>
-                        <h2>Projects</h2>
-                    </header>-->
+                <!--<div class="major container">
                        
-                    <?php        /*                                 
-                    $args = array( 'category_name' => 'projects', 'posts_per_page' => 5 );
-                    $loop = new WP_Query( $args );
-                    while ( $loop->have_posts() ) : $loop->the_post();
 
-                        the_post_thumbnail();
-                        get_template_part( 'template-parts/content', 'page' );
-
-                    endwhile; */ // End of the loop.
-                    
-                    ?> 
                 <!--</div> .box container-->
             <?php else: ?>
             
              <div class="major container">
-			<?php
-			while ( have_posts() ) : the_post();
+                 <?php   
+                 //The Loop
+                 
+                while ( have_posts() ) : the_post();
+                    
+                    the_post_thumbnail();
+                    
+                    get_template_part( 'template-parts/content', 'page' );
 
-				get_template_part( 'template-parts/content', 'page' );
+                    // If comments are open or we have at least one comment, load up the comment template.
+                    if ( comments_open() || get_comments_number() ) :
+                        comments_template();
+                    endif;
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+                endwhile; // End of the loop.
 
-			endwhile; // End of the loop.
+                
 			?></div><!--.box container-->
             <?php endif; ?>
             

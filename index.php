@@ -27,7 +27,12 @@ get_header(); ?>
 
                 <?php
                 endif;
-
+                if( is_home ) {                                     
+                    
+                    query_posts('cat=26'); 
+                    echo '<h1>Articles</h1>';
+                    
+                } 
                 /* Start the Loop */
                 while ( have_posts() ) : the_post();
 
@@ -39,9 +44,9 @@ get_header(); ?>
                     get_template_part( 'template-parts/content', get_post_format() );
 
                 endwhile;
-
+                
                 the_posts_navigation();
-
+                wp_reset_query();
             else :
 
                 get_template_part( 'template-parts/content', 'none' );
